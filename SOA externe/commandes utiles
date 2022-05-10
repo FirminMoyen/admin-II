@@ -1,0 +1,8 @@
+docker build -t test_dns .
+docker run -d --name DNS -p 53:53/udp test_dns:latest
+
+named-checkconf
+named-checkzone m1-8.ephec-ti.be. m1-8.ephec-ti.be
+
+dig @localhost www.m1-8.ephec-ti.be
+dig @176.96.231.216 www.m1-8.ephec-ti.be
