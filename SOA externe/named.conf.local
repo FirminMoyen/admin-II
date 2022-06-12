@@ -8,5 +8,5 @@
 
 zone "m1-8.ephec-ti.be" {
     type master;
-    file "/etc/bind/m1-8.ephec-ti.be";
+    file "/etc/bind/m1-8.ephec-ti.be.signed";
 };
