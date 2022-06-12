@@ -5,4 +5,15 @@ named-checkconf
 named-checkzone m1-8.ephec-ti.be. m1-8.ephec-ti.be
 
 dig @localhost www.m1-8.ephec-ti.be
-dig @176.96.231.216 www.m1-8.ephec-ti.be
+dig @51.68.70.170 www.m1-8.ephec-ti.be
+
+dnssec-keygen -f KSK -a RSASHA256 -b 2048 -n ZONE m1-8.ephec-ti.be
+dnssec-keygen -a RSASHA256 -b 2048 -n ZONE m1-8.ephec-ti.be
+
+mv /etc/bind/keys/Km1-8.ephec-ti.be.+008+45317.key /etc/bind/keys/m1-8.ephec-ti.be.ksk.key
+mv /etc/bind/keys/Km1-8.ephec-ti.be.+008+45317.private /etc/bind/keys/m1-8.ephec-ti.be.ksk.private
+
+mv /etc/bind/keys/Km1-8.ephec-ti.be.+008+18885.key /etc/bind/keys/m1-8.ephec-ti.be.zsk.key
+mv /etc/bind/keys/Km1-8.ephec-ti.be.+008+18885.private /etc/bind/keys/m1-8.ephec-ti.be.zsk.private
+
+dnssec-signzone -e20221020030000 -t -g -k ./m1-8.ephec-ti.be.ksk.key -o m1-8.ephec-ti.be ../m1-8.ephec-ti.be ./m1-8.ephec-ti.be.zsk.key
