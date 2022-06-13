@@ -1,0 +1,11 @@
+docker build -t test_db .
+
+docker run -d -p 3306:3306 --name my-mysql \
+-e MYSQL_ROOT_PASSWORD=Password test_db:latest
+
+mysql -uroot -p
+show databases;
+use DB_woody;
+show tables;
+show columns from jouets;
+select * from jouets;
