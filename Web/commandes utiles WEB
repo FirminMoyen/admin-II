@@ -1,5 +1,8 @@
 docker build -t test_web .
 docker run -d --name WEB -p 80:80 -p 443:443 -h m1-8.ephec-ti.be test_web:latest
 
+http://www.m1-8.ephec-ti.be
+http://b2b.m1-8.ephec-ti.be
+
 https://www.m1-8.ephec-ti.be
 https://b2b.m1-8.ephec-ti.be
